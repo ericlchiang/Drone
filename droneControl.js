@@ -1,28 +1,15 @@
 #!/usr/bin/env node
-var net = require('net');
-
-var server = net.createServer(function(client) { //'connection' listener
-  console.log('server connected');
-  client.on('end', function() {
-    console.log('server disconnected');
-  });
-  client.write('hello\r\n');
-  client.pipe(client);
-
-  //console.log(client);
-});
-
-server.listen(8888, function() { //'listening' listener
-  console.log('server bound');
-});
 
 var arDrone = require('ar-drone');
 var client  = arDrone.createClient();
 
 var moveSpeed = 0.2;
 var rotSpeed = 0.2;
+var stdin = process.openStdin();
+stdin.resume();
+stdin.setRawMode(true);
+stdin.setEncoding('utf8');
 
-/*
 stdin.on( 'data', function( key ){
   if ( key === '\u0003' ) {
     process.exit();
@@ -66,4 +53,3 @@ stdin.on( 'data', function( key ){
     }  
   }
 });
-*/
