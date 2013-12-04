@@ -48,7 +48,7 @@ var server = net.createServer(function(socket) { //'connection' listener
       case ' \r\n': process.stdout.write('STOP'+'\n');
 		client.stop();
                 break;
-      case 'f\r\n': process.stdout.write('FLIP'+'\n\);
+      case 'f\r\n': process.stdout.write('FLIP'+'\n');
 	        client.animate('flipLeft', 15);
 		break;
       default: console.log('Nothing Received, message is:\"' +message+ '\"\n');
